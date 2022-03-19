@@ -1,0 +1,48 @@
+GET http://localhost:8080/app/persons/all
+Accept: application/json
+key: "my-key"
+
+
+
+###
+GET http://localhost:8080/app/persons/1
+Accept: application/json
+
+###
+
+POST http://localhost:8080/app/persons
+Accept: application/json
+Content-Type: application/json
+key: "my-key"
+
+{
+  "id": 5,
+  "firstName": "Fletcher",
+  "lastName": "Goodin",
+  "age": 3,
+  "gender": {
+    "type": "Male"
+  },
+  "isFunny": false
+}
+
+###
+
+PUT http://localhost:8080/app/persons
+Accept: application/json
+Content-Type: application/json
+key: "my-key"
+
+{
+  "id": 5,
+  "firstName": "Fletcher",
+  "lastName": "Goodin",
+  "age": 3,
+  "gender": {
+    "type": "Male"
+  },
+  "isFunny": false
+}
+
+###
+
