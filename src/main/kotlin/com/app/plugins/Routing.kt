@@ -2,28 +2,29 @@ package com.app.plugins
 
 import com.app.domain.Male
 import com.app.domain.Person
+import com.app.service.PersonService
 import io.ktor.application.*
+import io.ktor.http.*
+import io.ktor.response.*
+import io.ktor.routing.*
 import org.bson.types.ObjectId
+import org.koin.ktor.ext.inject
 
-fun Application.configureRouting() {
+fun Route.apiRoutes() {
 
-    //val personService by inject<MongoPersonService>()
+    val personService by inject<PersonService>()
 
-    // Starting point for a Ktor app:
-//    routing {
-//        route("/app/persons/{id}", HttpMethod.Get) {
-//            handle {
-//                //val person = createTheOldMan()
-//                val id = call.parameters["id"]!!.toLong()
-//                val person = personService.get(id)
-//                if (person != null) {
-//                    call.respond(person)
-//                } else {
-//                    call.respond(HttpStatusCode.NotFound, mapOf("msg" to "not found"))
-//                }
-//            }
-//        }
-//    }
+
+    get("/app/persons/{id}") {
+        //val person = createTheOldMan()
+        val id = call.parameters["id"]!!.toLong()
+        val person = personService.get(id)
+        if (person != null) {
+            call.respond(person)
+        } else {
+            call.respond(HttpStatusCode.NotFound, mapOf("msg" to "not found"))
+        }
+    }
 }
 
 private fun createTheOldMan(): Person {
