@@ -34,8 +34,11 @@ fun Application.module() {
         SLF4JLogger()
         modules(
             module {
-                val mongoUri = environment.config.propertyOrNull("app.mongoUri")?.getString()!!
-                single<MongoClient> { KMongo.createClient(mongoUri) }
+                single<MongoClient> {
+                    KMongo.createClient(
+                        environment.config.propertyOrNull("app.mongoUri")?.getString()!!
+                    )
+                }
                 single<PersonService> { MongoPersonService() }
             }
         )
