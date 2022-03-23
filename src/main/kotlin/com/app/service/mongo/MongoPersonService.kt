@@ -18,7 +18,7 @@ import org.litote.kmongo.findOne
 
 class MongoPersonService : PersonService, KoinComponent {
 
-    val client by inject<MongoClient>()
+    private val client by inject<MongoClient>()
 
     var collection: MongoCollection<Person> = client.getDatabase("app")
         .withWriteConcern(WriteConcern.ACKNOWLEDGED)

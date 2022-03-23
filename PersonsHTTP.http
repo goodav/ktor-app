@@ -1,4 +1,4 @@
-GET http://localhost:8080/app/persons/all
+GET http://localhost:8080/app/persons
 Accept: application/json
 key: "my-key"
 
